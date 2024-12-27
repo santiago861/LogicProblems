@@ -23,11 +23,11 @@ def flippingMatrix(matrix):
     count = 1
     count2 = 0
 
-    for line in range(n - 1, -1): # n = 3 --> range(2, 1, 0)
+    for line in range(n - 1, -1, -1): # n = 3 --> range(2, 1, 0)
         y = 1
         x = 0
         
-        for column in range(n - 1, -1): # n = 3 --> range(2, 1, 0)
+        for column in range(n - 1, -1, -1): # n = 3 --> range(2, 1, 0)
             maxElem = max(matrix[n - count][n - y], matrix[n - count][n + x], matrix[n + count2][n - y], matrix[n + count2][n + x])
             totalSum += maxElem
             y += 1
