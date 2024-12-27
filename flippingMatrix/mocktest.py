@@ -18,7 +18,7 @@ import sys
 def flippingMatrix(matrix):
     # Write your code here
     n = len(matrix) // 2
-    totalSum = []
+    totalSum = 0
 
     count = 1
     count2 = 0
@@ -29,18 +29,13 @@ def flippingMatrix(matrix):
         
         for column in range(n - 1, -1): # n = 3 --> range(2, 1, 0)
             maxElem = max(matrix[n - count][n - y], matrix[n - count][n + x], matrix[n + count2][n - y], matrix[n + count2][n + x])
-            totalSum.append(maxElem)
+            totalSum += maxElem
             y += 1
             x += 1
         count += 1
         count2 += 1
 
-    
-    result = 0
-    for elem in totalSum:
-        result += elem
-    print(result)
-    return result
+    return totalSum
 
             
 

@@ -29,8 +29,8 @@ def flippingMatrix(matrix):
         
         for column in range(n - 1, -1): # n = 3 --> range(2, 1, 0)
             maxElem = max(matrix[n - count][n - y], matrix[n - count][n + x], matrix[n + count2][n - y], matrix[n + count2][n + x])
-
             totalSum += maxElem
+            
             y += 1
             x += 1
         count += 1
