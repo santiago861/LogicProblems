@@ -6,51 +6,27 @@ import random
 import re
 import sys
 
-
-
 #
-# Complete the 'flippingMatrix' function below.
+# Complete the 'twoArrays' function below.
 #
-# The function is expected to return an INTEGER.
-# The function accepts 2D_INTEGER_ARRAY matrix as parameter.
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. INTEGER k
+#  2. INTEGER_ARRAY A
+#  3. INTEGER_ARRAY B
 #
 
-def flippingMatrix(matrix):
-    # Write your code here
-    longit = len(matrix) // 2
-    finalMatrix = []
-    sum = 0
+def twoArrays(k, A, B):
+    # la solucion se basa en ordenar los dos arr y e invertir el arr B
+    # asi podremos verificar la suma de los minimos elems de A con los
+    # max elems de B 'forzando' que siempre el minimo elmen de A se sume con
+    # el max elem de B y el max elem de A se sume con el min elem de B
+                 
 
-    for line in range(0, longit):
-        x = len(matrix) // 2 # this is the cuadrant we want to calculate n * n
-        y = len(matrix) // 2 # this is the cuadrant we want to calculate n * n
-        line = []
 
-        for column in range(0, longit):
-            if x == 1:
-                if x == 1 and y == 1:
-                    elemMax = max(matrix[line][column], matrix[line][(x*2) + 1], matrix[(y*2) + 1][column], matrix[(y*2) + 1][(x*2) + 1])
-                    line.append(elemMax)
-                else:
-                    elemMax = max(matrix[line][column], matrix[line][(x*2) + 1], matrix[y*2][column], matrix[y*2][(x*2) + 1])
-                    line.append(elemMax)
-            else:
-                if y == 1:
-                    elemMax = max(matrix[line][column], matrix[line][x*2], matrix[(y*2) + 1][column], matrix[(y*2) + 1][x*2])
-                    line.append(elemMax)
-                else: 
-                    elemMax = max(matrix[line][column], matrix[line][x*2], matrix[y*2][column], matrix[y*2][x*2])
-                    line.append(elemMax)
-            x -= 1
 
-            
-        y -= 1
-        finalMatrix.append(line)
-    
-    for i in range(len(finalMatrix)):
-        for j in range(len(finalMatrix)):
-            sum += j
-    return sum 
+
+
 
 
 if __name__ == '__main__':
@@ -59,15 +35,18 @@ if __name__ == '__main__':
     q = int(input().strip())
 
     for q_itr in range(q):
-        n = int(input().strip())
+        first_multiple_input = input().rstrip().split()
 
-        matrix = []
+        n = int(first_multiple_input[0])
 
-        for _ in range(2 * n):
-            matrix.append(list(map(int, input().rstrip().split())))
+        k = int(first_multiple_input[1])
 
-        result = flippingMatrix(matrix)
+        A = list(map(int, input().rstrip().split()))
 
-        fptr.write(str(result) + '\n')
+        B = list(map(int, input().rstrip().split()))
+
+        result = twoArrays(k, A, B)
+
+        fptr.write(result + '\n')
 
     fptr.close()
