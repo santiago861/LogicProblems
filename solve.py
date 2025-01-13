@@ -17,10 +17,14 @@ import sys
 #
 
 def twoArrays(k, A, B):
-    # la solucion se basa en ordenar los dos arr y e invertir el arr B
-    # asi podremos verificar la suma de los minimos elems de A con los
-    # max elems de B 'forzando' que siempre el minimo elmen de A se sume con
-    # el max elem de B y el max elem de A se sume con el min elem de B
+    A = sorted(A)
+    B = sorted(B)
+    B.reverse()
+
+    for i in range(0, len(A)):
+        if A[i] + B[i] < k:
+            return 'NO'
+    return 'YES'
                  
 
 
