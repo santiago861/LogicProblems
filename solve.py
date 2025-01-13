@@ -7,28 +7,26 @@ import re
 import sys
 
 #
-# Complete the 'twoArrays' function below.
+# Complete the 'birthday' function below.
 #
-# The function is expected to return a STRING.
+# The function is expected to return an INTEGER.
 # The function accepts following parameters:
-#  1. INTEGER k
-#  2. INTEGER_ARRAY A
-#  3. INTEGER_ARRAY B
+#  1. INTEGER_ARRAY s
+#  2. INTEGER d
+#  3. INTEGER m
 #
 
-def twoArrays(k, A, B):
-    A = sorted(A)
-    B = sorted(B)
-    B.reverse()
+def birthday(s, d, m):
+    # Write your code here
+    waysCount = 0
 
-    for i in range(0, len(A)):
-        if A[i] + B[i] < k:
-            return 'NO'
-    return 'YES'
-                 
-
-
-
+    for i in range(0, (len(s) - m) + 1):
+        sumNumbers = 0
+        for j in range(i, i + m):
+            sumNumbers += s[j]
+        if sumNumbers == d:
+            waysCount += 1
+    return waysCount
 
 
 
@@ -36,21 +34,18 @@ def twoArrays(k, A, B):
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    q = int(input().strip())
+    n = int(input().strip())
 
-    for q_itr in range(q):
-        first_multiple_input = input().rstrip().split()
+    s = list(map(int, input().rstrip().split()))
 
-        n = int(first_multiple_input[0])
+    first_multiple_input = input().rstrip().split()
 
-        k = int(first_multiple_input[1])
+    d = int(first_multiple_input[0])
 
-        A = list(map(int, input().rstrip().split()))
+    m = int(first_multiple_input[1])
 
-        B = list(map(int, input().rstrip().split()))
+    result = birthday(s, d, m)
 
-        result = twoArrays(k, A, B)
-
-        fptr.write(result + '\n')
+    fptr.write(str(result) + '\n')
 
     fptr.close()
