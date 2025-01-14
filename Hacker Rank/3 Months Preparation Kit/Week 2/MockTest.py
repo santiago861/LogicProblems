@@ -37,7 +37,6 @@ def flippingMatrix(matrix):
 
     return totalSum
 
-            
 
 
 if __name__ == '__main__':
